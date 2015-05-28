@@ -6,9 +6,9 @@ same array and arguments.
 
 ## Requirements
 
-Supports Ruby 1.8.7+ but you will need the
+Supports Ruby 1.8.7+, however, you will need the
 [backports](https://rubygems.org/gems/backports) gem installed to get
-`Array#sample` for Ruby < 1.9.1 and `Random` for Ruby < 1.9.2
+`Array#sample` for Ruby < 1.9.3 and `Random` for Ruby < 1.9.2
 
 ## Examples
 

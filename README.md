@@ -1,4 +1,5 @@
-# Array Deterministic Sample {<img src="https://travis-ci.org/songkick/array_deterministic_sample.svg?branch=master">}[https://travis-ci.org/songkick/array-deterministic-sample]
+# Array Deterministic Sample
+[<img src="https://travis-ci.org/songkick/array_deterministic_sample.svg?branch=master">](https://travis-ci.org/songkick/array-deterministic-sample)
 
 Select random members from an array, but always get the same results for the
 same array and arguments.

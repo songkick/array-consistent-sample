@@ -1,4 +1,4 @@
-require 'backports/1.9.1/array/sample' if RUBY_VERSION < '1.9.3'
+require 'backports/1.9.1/array/sample' if RUBY_VERSION < '1.9.1'
 require 'backports/1.9.2/random' if RUBY_VERSION < '1.9.2' && !defined?(::Random)
 require 'digest/sha1'
 

@@ -1,8 +1,8 @@
-# Array Deterministic Sample
-[<img src="https://travis-ci.org/songkick/array_deterministic_sample.svg?branch=master">](https://travis-ci.org/songkick/array-deterministic-sample)
+# Array Consistent Sample
+[<img src="https://travis-ci.org/songkick/array_consistent_sample.svg?branch=master">](https://travis-ci.org/songkick/array-consistent-sample)
 
-Select random members from an array, but always get the same results for the
-same array and arguments.
+Select pseudo-random members from arrays, but always get the same results given
+the same array contents and arguments over time.
 
 ## Requirements
 
@@ -10,29 +10,37 @@ Supports Ruby 1.8.7 and 1.9.3+ however, you will need the
 [backports](https://rubygems.org/gems/backports) gem installed to get
 `Array#sample` and `Random` for Ruby 1.8.7.
 
+## What problem does this solve?
+
+This gem was built to spread load over background job servers for tasks that
+don't need to run on every background server. We take a consistent sample from
+the set of currently running background servers with the job name to vary the
+results and spread load. If a previously selected background server goes away,
+a different one is consistently selected from the new set.
+
 ## Examples
 
     people = ['Sally', 'Bob', 'Alice', 'Joe']
 
 The same array and same arguments always gets you the same results (results may
-vary between Ruby versions and platforms, but should be consistent in a given
-Ruby version).
+vary between Ruby versions and platforms, but should be consistent for that
+same Ruby and platform).
 
-    people.deterministic_sample(1)
+    people.consistent_sample(1)
     # => ["Sally"]
-    people.deterministic_sample(1)
+    people.consistent_sample(1)
     # => ["Sally"]
 
 You can pass an optional second parameter to vary the sample.
 
-    people.deterministic_sample(1, 'Mow the lawn')
+    people.consistent_sample(1, 'Mow the lawn')
     # => ["Alice"]
 
-    people.deterministic_sample(2, 'Sort recycling')
+    people.consistent_sample(2, 'Sort recycling')
     # => ["Sally", "Alice"]
 
-    people.deterministic_sample(2, 'Wash the dishes')
+    people.consistent_sample(2, 'Wash the dishes')
     # => ["Bob", "Joe"]
 
-    people.deterministic_sample(3, 'Bring about world peace')
+    people.consistent_sample(3, 'Bring about world peace')
     # => ["Bob", "Alice", "Joe"]

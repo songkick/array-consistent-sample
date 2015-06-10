@@ -1,22 +1,26 @@
 # Array Consistent Sample
-[<img src="https://travis-ci.org/songkick/array_consistent_sample.svg?branch=master">](https://travis-ci.org/songkick/array-consistent-sample)
+[<img src="https://travis-ci.org/songkick/array-consistent-sample.svg?branch=master">](https://travis-ci.org/songkick/array-consistent-sample)
 
-Select pseudo-random members from arrays, but always get the same results given
-the same array contents and arguments over time.
+Calling `Array#consistent_sample` works like `Array#sample`, but produces
+consistent output if:
+* the Array's contents are unchanged
+* the arguments to `#consistent_sample` are the same
 
 ## Requirements
 
-Supports Ruby 1.8.7 and 1.9.3+ however, you will need the
-[backports](https://rubygems.org/gems/backports) gem installed to get
-`Array#sample` and `Random` for Ruby 1.8.7.
+Supports Ruby 1.8.7 and 1.9.3+. However, for Ruby 1.8.7, you will need the
+[backports](https://rubygems.org/gems/backports) gem installed so that
+`Array#sample` and `Random` will be available.
 
 ## What problem does this solve?
 
 This gem was built to spread load over background job servers for tasks that
-don't need to run on every background server. We take a consistent sample from
-the set of currently running background servers with the job name to vary the
-results and spread load. If a previously selected background server goes away,
-a different one is consistently selected from the new set.
+don't need to run on every background server. Single or multiple background
+server names can be consistently sampled from a set of currently running
+background servers, with job names passed to vary the results and spread
+load. If, hypothetically, a previously selected background server goes away, a
+different one is consistently selected from the altered set of background
+servers.
 
 ## Examples
 

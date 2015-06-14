@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name                       = 'array-consistent-sample'
-  s.version                    = '1.0.0'
+  s.version                    = '1.0.1'
   s.licenses                   = ['MIT']
   s.summary                    = 'Array#sample with consistent results'
   s.description                = 'Returns consistent array subsets using Array#sample with a PRNG seeded with a hexdigest of the sorted contents of the array and an optional string.'
